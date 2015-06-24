@@ -1,491 +1,1016 @@
-<!DOCTYPE html>
-<html>
-<head lang="en">
-    <title>海伦化肥网-经销海伦尿素、海伦二胺、海伦复合肥、海伦硫酸钾</title>
-    <meta charset="UTF-8">
-    <meta name="description" content="在黑龙江省海伦市购买化肥，海伦尿素、海伦复合肥、海伦二胺、海伦硫酸钾，到海伦化肥网">
-    <meta name="keywords" content="海伦化肥,海伦买化肥, 海伦市化肥,化肥,买化肥，海伦尿素、海伦二胺、海伦复合肥、海伦硫酸钾">
-<meta name="google-site-verification" content="ojDzfwPxx6xGRAU8gvS-meGVYEGryb713O807NJaptc" />
-    <link href="css/bootstrap.min.css" rel="stylesheet">
-    <link href="css/bootstrap-responsive.min.css" rel="stylesheet">
-    <script type="text/javascript" src="js/bootstrap.min.js"></script>
 
-  <script>
-      var elem = document.getElementById('dummy');
-    elem.parentNode.removeChild(elem);
-    //return false;
-      
-  </script>
+
+
+
+
+
+
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+
+<head>
+ 
+
+
+<title>网购搜索网,一键同时搜索 淘宝 天猫 京东 当当 亚马逊等数十家网购, 找网购，到网购搜索网</title>
+<meta name='description' content='网购搜索网 wanggousousuo.com，提供全网最简洁实用的网购搜索功能，一键同时搜索 淘宝 天猫 京东 当当 亚马逊等数十家网购, 找网购，到网购搜索网'/>
+<meta name='keywords' content='网购搜索网 找网购 网购搜索 哪能网购  哪能买到 哪能网购到'/>
+<meta http-equiv="Content-Language" content="zh-CN" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="sitemap" type="application/xml" title="Sitemap" href="Sitemap.txt" />
+<link rel="meta" type="application/rdf+xml" title="Dublin" href="dublin.rdf" />
+<link rel="shortcut icon" type="image/vnd.microsoft.icon" href="favicon.ico" />
+<link rel="icon"  href="favicon.ico" />
+<link rel="search" type="application/opensearchdescription+xml" title="找网购" href="opensearch.xml" />
+
+
+<link rel="stylesheet"
+	href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css" />
+<link rel="stylesheet" href="css/common.css" type="text/css"/>
+<link rel="stylesheet" href="css/search.css" type="text/css"/>
+
+<script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+<script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
+
+
+
+
+
+
+
+<script>
+var C_productsPerPage = 40;//const :product max count per page
+var currentItemIndex = 1;
+var needShowedItemCount = 0;
+var needShowedPageCount = 1;
+
+var allProduct = [];
+var viewedProducts = [];
+var allshop = [];	
+var shop_condition='全部';
+var pageIndex ='1';
+var price_between_switch = 'off';
+var price_min = 0;	//price filter condition
+var price_max = 0;	//price filter condition
+
+function searchAll(keywordVar) {
+	//show loading bar when begin search
+	 $("#loading").show();
+	
+	//re initialize
+	 setPageIndex(1);
+	 allshop = [];	// 
+	 allProduct = []; 
+	
+	//$("#keyword-info span").text("搜索关键字  " + keywordVar);
+	$("div#search_result").empty();	//clear page
+	//$('#search_result_summary span').text('0');
+	
+	//initialize end
+	
+	//get fastest server from server list
+	var urlSouSou = '';
+	
+	//Use local server for these shop
+	//searchOneShop('taobao',keywordVar ,1,'');
+	//searchOneShop('amazon',keywordVar,1,'');
+	//searchOneShop('dangdang',keywordVar,1,'');
+	
+	
+				searchOneShop('dangdang',keywordVar,1,urlSouSou);
+			
+				searchOneShop('xyss',keywordVar,1,urlSouSou);
+			
+				searchOneShop('yihaodian',keywordVar,1,urlSouSou);
+			
+				searchOneShop('yixun',keywordVar,1,urlSouSou);
+			
+				searchOneShop('newegg',keywordVar,1,urlSouSou);
+			
+				searchOneShop('handuyishe',keywordVar,1,urlSouSou);
+			
+				searchOneShop('taobao',keywordVar,1,urlSouSou);
+			
+				searchOneShop('vjia',keywordVar,1,urlSouSou);
+			
+				searchOneShop('xiu',keywordVar,1,urlSouSou);
+			
+				searchOneShop('yougou',keywordVar,1,urlSouSou);
+			
+				searchOneShop('wl',keywordVar,1,urlSouSou);
+			
+				searchOneShop('yintai',keywordVar,1,urlSouSou);
+			
+				searchOneShop('outlets',keywordVar,1,urlSouSou);
+			
+				searchOneShop('tmall',keywordVar,1,urlSouSou);
+			
+				searchOneShop('qinqinbaby',keywordVar,1,urlSouSou);
+			
+				searchOneShop('amazon',keywordVar,1,urlSouSou);
+			
+				searchOneShop('jumei',keywordVar,1,urlSouSou);
+			
+				searchOneShop('aitaobao',keywordVar,1,urlSouSou);
+			
+				searchOneShop('moonbasa',keywordVar,1,urlSouSou);
+			
+				searchOneShop('fanke',keywordVar,1,urlSouSou);
+			
+				searchOneShop('gome',keywordVar,1,urlSouSou);
+			
+				searchOneShop('jingdong',keywordVar,1,urlSouSou);
+			
+				searchOneShop('coo8',keywordVar,1,urlSouSou);
+			
+				searchOneShop('mbaobao',keywordVar,1,urlSouSou);
+			
+				searchOneShop('paixie',keywordVar,1,urlSouSou);
+			
+				searchOneShop('lefeng',keywordVar,1,urlSouSou);
+			
+	
+	//use remote server for these shop
+	/*
+	searchOneShop('yixun',keywordVar,1,urlSouSou);
+	searchOneShop('fanke',keywordVar,1,urlSouSou);
+	searchOneShop('okbuy',keywordVar,1,urlSouSou);
+	searchOneShop('newegg',keywordVar,1,urlSouSou);
+	searchOneShop('handuyishe',keywordVar,1,urlSouSou);
+	searchOneShop('coo8',keywordVar,1,urlSouSou);
+	searchOneShop('qinqinbaby',keywordVar,1,urlSouSou);
+	searchOneShop('yihaodian',keywordVar,1,urlSouSou);
+	searchOneShop('m18',keywordVar,1,urlSouSou);
+	searchOneShop('jumei',keywordVar,1,urlSouSou);
+	//searchOneShop('vjia',keywordVar,1,urlSouSou);
+	//searchOneShop('lefeng',keywordVar,1,urlSouSou);
+	//searchOneShop('gome',keywordVar,1,urlSouSou);
+	searchOneShop('mbaobao',keywordVar,1,urlSouSou);
+	searchOneShop('yintai',keywordVar,1,urlSouSou);
+	searchOneShop('outlets',keywordVar,1,urlSouSou);
+	*/
+}//end search all
+
+function searchOneShop(shopnameVar,keywordVar, pagenum,url) {
+	if(url == undefined){
+		url = '';
+	}
+	$.ajax({
+		type:'get',
+		 url:url+'searchBean',	
+		 dataType:'jsonp',
+		 jsonp:"callback",
+		 data:{"shopname":shopnameVar, "keyword":keywordVar, "pagenum":pagenum },
+		 async: true,
+		 success:function(data){
+			 
+				showProducts(data);
+				
+				//init shop conditions
+				for (var i in data) 
+				{ 
+					 if( !arrayContain(allshop, data[i].source )){
+						 allshop.push( data[i].source );
+						 $cloneShopCondition = $('.shop-condition:eq(0)').clone(true);
+						 $cloneShopCondition.children('a').children('span').text(data[i].source );
+						 
+						 $("#condition-shops ul").append( $cloneShopCondition);//condition-shops
+						// alert(allshop.join());
+					 }
+				}
+
+				allProduct = $.merge(allProduct, data);
+				if(shopnameVar=='tmall' || shopnameVar=='jingdong'){// 
+					//$("#sort-comment-321").trigger('click'); 
+				}
+				
+				 $("#loading").hide();
+		 }
+	 }) ;
+
+} //end search one shop
+	
+function showProducts(products) { 
+ 
+	$template = $("div#search_item_template>div").clone(true);
+	
+	for ( var p in products) {
+		
+		//filter condition æäºitemæ éæ¾ç¤º
+		if(shop_condition != '全部'){	//shop condition filter
+			if(shop_condition != products[p].source){//not match codition, not show
+				continue;
+			}
+		}
+		if(price_between_switch=='on'){	//price condition filter
+			
+			if(price_min != 0){
+				if( products[p].price < price_min  ){
+					continue;
+				}
+			}
+			if(price_max != 0){
+				if( products[p].price > price_max){
+					continue;
+				}
+			}
+		}
+		
+		
+		currentItemIndex++;
+		var startItemIndex  = (pageIndex-1) *C_productsPerPage;
+		var endItemIndex  = (pageIndex) *C_productsPerPage;
+		
+		if( currentItemIndex <= startItemIndex || currentItemIndex > endItemIndex){
+			continue;	
+		}
+		
+		$newItem = $template.clone(true);
+		
+		setProduct($newItem, products[p]);
+		
+		$newItem.find("input").val(JSON.stringify(products[p]));
+		
+		//show on page
+		$("#search_result").append($newItem);
+		//if(currentItemIndex%4 == 0){
+		//	$("#search_result").append('<div class="clear-fix-hidden"></div>');
+		//}
+
+	}//end for
+	
+}
+
+function setProduct(item, p){
+	item.find("div[class='item_pic'] a img").attr('src',
+			p.imgUrl);
+
+	item.find("div[class='item_pic'] a").attr('href',
+			p.url);
+	 
+	item.find("div[class='item_title'] a").text(p.name);
+	item.find("div[class='item_title'] a").attr('href',
+			p.url);
+
+	if (p.price.length == 0) {
+		item.find("div[class='item_price'] span ").text("ææ ");
+	} else if (p.price.length > 15) {
+		item.find("div[class='item_price'] span").hide();
+		item.find("div[class='item_price'] img").attr('src',
+				p.price);
+	} else {
+		item.find("div[class='item_price'] img").hide();
+		item.find("div[class='item_price'] span").text(
+				p.price);
+	}
+	
+	if(p.commentCount == 0){
+		item.find("div[class='item_comment'] a span ").text("暂无");
+	}
+	else{
+		item.find("div[class='item_comment'] a span ").text(p.commentCount);
+	}
+	
+	if(p.commentUrl == '' || p.commentUrl == '#'){
+		item.find("div[class='item_comment'] a").attr('href',
+				p.url);
+	}
+	else{
+		item.find("div[class='item_comment'] a").attr('href',
+				p.commentUrl);
+	}
+	
+	item.find("div[class='item_source'] a").attr('href',
+			p.url);
+	item.find("div[class='item_source'] a").text(  p.source );
+}
+	
+function setPageIndex(index){
+	pageIndex = index;
+	currentItemIndex = 0;
+	$(".pageindex").attr("style", "color:#055D90");
+	$(".pageindex").eq(index-1).attr("style", "color:red");
+	$("div#search_result").empty();
+	
+}
+
+//--- tools --------------------------------------------------------------
+
+function sortJSON(data, key, way) {
+	return data.sort(function(a, b) {
+		var x = parseFloat(a[key]);
+		var y = parseFloat(b[key]);
+		
+		if (way === '123') {
+			if(x=='x')return 0;//x unkown value
+			if(y=='x')return 1;//x unkown value
+			if(x>y) return 1;
+			if(x==y) return 0;
+			if(x<y) return -1;
+		}
+		if (way === '321') {
+			if(x=='x')return 1;//x unkown value
+			if(y=='x')return 0;//x unkown value
+			if(x<y) return 1;
+			if(x==y) return 0;
+			if(x>y) return -1;
+		}
+	});
+}
+
+function arrayContain(array, element){
+	for(var a in array){
+		
+		if(array[a] == element){
+			
+			//alert(array[a]);
+			return true;
+		}
+	}
+	return false;
+}
+
+function setCookie(c_name,value,expiredays)
+{
+	var exdate=new Date();
+	exdate.setDate(exdate.getDate()+expiredays);
+	//alert(exdate.toGMTString() );
+	document.cookie=c_name+ "=" +escape(value) + ((expiredays==null) ? "" : ";expires="+exdate.toGMTString());
+}
+
+function getCookie(c_name){
+	if (document.cookie.length>0){
+		c_start=document.cookie.indexOf(c_name + "=");
+		if (c_start!=-1){
+			c_start=c_start + c_name.length+1;
+			c_end=document.cookie.indexOf(";",c_start);
+			if (c_end==-1) c_end=document.cookie.length;
+			return unescape(document.cookie.substring(c_start,c_end));
+		}
+	}
+	return "";
+}
+
+</script>
+
+
+
+<script>
+
+$( document ).ready(function() {
+	//init and search after page is loaded
+	setPageIndex(1);
+	$('#keyword').val('iphone');
+	var userId = getCookie('wgss_userid');
+	if(userId == ''){
+		userId = 'fda8a182-0c8b-4d87-82f7-5d7eb82b37a5';	
+		setCookie('wgss_userid', userId, '365');
+	}
+
+	
+		searchAll('iphone' );
+
+		$.ajax({
+			type:'get',
+			 url:'searchBean',	
+			 dataType:'jsonp',
+			 jsonp:"callback",
+			 data:{"method":'getHistory',"userId": userId},
+			 async: true,
+			 success:function(data){
+				 if(data != "" && data != undefined){
+					 viewedProducts = [];
+					 viewedProducts = $.merge(viewedProducts, data);	 
+				 }
+			 }
+		 }) ;
+		
+
+		
+
+	
+	
+	//$('#go-top').css('left', ($("#search_result").offset().left+$("#search_result").width())+'px');
+	
+	
+	$(window).scroll(function(){
+		
+		if($(document).scrollTop()>100){
+			$('#go-top').css('display','block');	
+		}
+		else {
+			$('#go-top').css('display','none');	
+		}
+	});
+	
+	//onclick search
+	$("#submit-search-btn").on("click", function() {
+		window.location.href = 'search.jsp?keyword='+ $("#keyword").val(); // 跳转
+	}); //end  on
+
+	$("#keyword").keydown(
+		function(event) {
+			if (event.keyCode == 13) {
+				window.location.href = 'search.jsp?keyword='+ $("#keyword").val(); // 跳转
+			}
+	});
+
+	//onclick shop-condition
+	$(".shop-condition a").on("click", function() {
+		
+		setPageIndex(1);
+		
+		$(".shop-condition a").css("color", "#055D90");
+		$(this).css("color", "red");
+		
+		$("div#search_result").empty();
+		
+		shop_condition = $.trim(  $(this).text() ) ;
+		
+		showProducts(allProduct);
+		
+		if($(this).text()=='淘宝网'){
+			//alert('tb');
+			//document.write("<script src='js/taobaoref.js' id='taobaojs'><\/scrip>");
+			//$('#taobaojs').attr('src','js/taobaoref.js');
+			//$.getScript("js/taobaoref.js"); 
+		 
+		}
+		if($(this).text()=='天猫商城'){
+			//alert('tm');
+			//$("script[src='js/taobaoref.js']").remove();
+			//$('#taobaojs').attr('src','') ;
+			//alert($('#taobaojs').attr('src'));
+			//win.alimamatk_onload=[];
+			//$('a').unbind();
+		}
+
+	}); //end  on
+	
+	//onclick page num
+	$(".pageindex").on("click", function() {
+		pageIndex =   $(this).text();	//set page num
+		setPageIndex(pageIndex);
+		showProducts(allProduct);
+
+	}); //end  on
+	
+	//begin sort
+	$("#sort-price-123").on("click", function() {
+		$(".product-sort").attr("style", "color:#055D90");
+		$(this).attr("style", "color:red");
+		var sortedProducts = sortJSON(allProduct,'price', '123'); // 123 or 321
+		$("div#search_result").empty();
+		setPageIndex(1);
+		showProducts(sortedProducts);
+	}); //end  on
+	$("#sort-price-321").on("click", function() {
+		$(".product-sort").attr("style", "color:#055D90");
+		$(this).attr("style", "color:red");
+		var sortedProducts = sortJSON(allProduct,'price', '321'); // 123 or 321
+		$("div#search_result").empty();
+		setPageIndex(1);
+		showProducts(sortedProducts);
+	}); //end  on
+	$("#sort-comment-123").on("click", function() {
+		$(".product-sort").attr("style", "color:#055D90");
+		$(this).attr("style", "color:red");
+		var sortedProducts = sortJSON(allProduct,'commentCount', '123'); // 123 or 321
+		$("div#search_result").empty();
+		setPageIndex(1);
+		showProducts(sortedProducts);
+	}); //end  on
+	$("#sort-comment-321").on("click", function() {
+		$(".product-sort").attr("style", "color:#055D90");
+		$(this).attr("style", "color:red");
+		var sortedProducts = sortJSON(allProduct,'commentCount', '321'); // 123 or 321
+		$("div#search_result").empty();
+		setPageIndex(1);
+		showProducts(sortedProducts);
+	}); //end  on
+	//end sort
+	
+	$("#price-betwwen-on").on("click", function() {
+		
+		setPageIndex(1);
+		
+		price_min = $("#price-min").val();	//between start
+		price_max = $("#price-max").val();  //between end
+		
+		price_min = parseFloat(price_min);
+		price_max = parseFloat(price_max);
+		
+		$("#price-betwwen-off").attr("style", "color:#055D90");
+		$(this).attr("style", "color:red");
+		price_between_switch = "on";
+		$("div#search_result").empty();
+		showProducts(allProduct);
+	}); //end  on
+
+	$("#price-betwwen-off").on("click", function() {
+		setPageIndex(1);
+		$("#price-betwwen-on").attr("style", "color:#055D90");	//change text color
+		$(this).attr("style", "color:red");
+		price_between_switch = "off";	//open 
+		$("div#search_result").empty();	//show products
+		showProducts(allProduct);
+	}); //end  on
+	
+	$(".logic-view-product").on("click", function() {
+		
+		var viewedProductStr = $(this).parent().parent().children('input').val();
+		var viewedProductObj = JSON.parse(viewedProductStr);
+		
+		
+		for(var p in viewedProducts){
+			if(viewedProducts[p].url == viewedProductObj.url){//如果已经添加过了，不在添加
+				//alert(viewedProducts[p].url);
+				//alert(viewedProductObj.url);
+				return true;
+			}
+		}
+		
+		viewedProducts = $.merge(viewedProducts, [viewedProductObj]);
+		
+		$.ajax({
+			type:'post',
+			 url:'searchBean',
+			 dataType:'jsonp',
+			 jsonp:"callback",
+			 data:{"data":JSON.stringify(viewedProducts), "method":'addHistory',"userId": userId},
+			 async: true,
+			 success:function(data){
+		 		//
+		 		return;
+			 }
+		 }) ;
+ 		 
+	}); //end  on	
+
+
+	
+	$('#item-hovor').on("click", function() {
+		//window.location.href=  $('#item-hovor').attr("href")   ; // 跳转
+	}); //end  on
+	
+}); //end document ready
+
+
+
+</script>
 
 </head>
 
-
-
-<body id='dummy'>
-
-<div class="container-fluid">
-    <div class="row-fluid">
-        <div class="span12">
-            <div class="hero-unit" style="background-color: #fbf7d2;"><!-- #f7f4e0 -->
-                <h2 style="font-size: 63px;">
-                    海伦化肥网
-                </h2><br/>
-                <p style="font-size: 30px;">
-                    黑龙江省海伦市购买化肥，到海伦化肥网（www.HailunHuafei.com）
-                </p>
-                <p style="font-size: 30px;">
-                    全体员工竭诚为海伦农民朋友服务！
-                </p>
-                <br/>
-                <p style="font-size: 30px;">
-                    经销商：海伦市永盛丰化肥经销有限公司
-                </p>
-                <p style="font-size: 30px;">
-                    地址：黑龙江省海伦市 化肥大市场东北门30号
-                </p>
-                <p style="font-size: 30px;">
-                    电话：13836420109 邵经理
-                </p>
-            </div>
-            <br/>
+<body>
 
 
 
-            <!-- 品种 -->
-
-
-            <h1>本店经营品种：</h1><br/>
-            <h3>本店销售湖北宜化（复合肥、二铵、尿素、一铵、硫酸钾）、云天化（复合肥、二铵、尿素）、
-                辽宁东北丰（掺混肥、复合肥）、湖北鄂中复合肥、宁夏金牛（硫酸钾、复合肥）等系列品种，
-                和多种进口、国产农药、叶面肥，
-                并为广大农民朋友提供免费咨询指导，欢迎城乡上下经销商、农业合作社及农民朋友光临惠顾，联系电话 13836420109 邵经理</h3><br/><br/>
-
-            <!-- 宜化 -->
-            <ul class="thumbnails">
-                <li class="span4">
-                    <div class="thumbnail">
-                        <img alt="300x200" src="img/yh-fuhefei.gif" />
-                        <div class="caption">
-                            <h2>
-                                宜化复合肥
-                            </h2><br/>
-                            <h4>
-                                经销商：海伦市永盛丰化肥经销有限公司
-                            </h4><br/>
-                            <h4>
-                                联系电话：13836420109 邵经理
-                            </h4>
-
-                        </div>
-                    </div>
-                </li>
-                <li class="span4">
-                    <div class="thumbnail">
-                        <img alt="300x200" src="img/yh-2an.png" />
-                        <div class="caption">
-                            <h2>
-                                宜化二铵
-                            </h2><br/>
-                            <h4>
-                                经销商：海伦市永盛丰化肥经销有限公司
-                            </h4><br/>
-                            <h4>
-                                联系电话：13836420109 邵经理
-                            </h4>
-
-                        </div>
-                    </div>
-                </li>
-                <li class="span4">
-                    <div class="thumbnail">
-                        <img alt="300x200" src="img/yh-ns5.jpg" />
-                        <div class="caption">
-                            <h2>
-                                宜化尿素
-                            </h2><br/>
-                            <h4>
-                                经销商：海伦市永盛丰化肥经销有限公司
-                            </h4><br/>
-                            <h4>
-                                联系电话：13836420109 邵经理
-                            </h4>
-
-                        </div>
-                    </div>
-                </li>
-            </ul>
-
-
-            <ul class="thumbnails">
-                <li class="span4">
-                    <div class="thumbnail">
-                        <img alt="300x200" src="img/yh-1an.png" />
-                        <div class="caption">
-                            <h2>
-                                宜化一铵
-                            </h2><br/>
-                            <h4>
-                                经销商：海伦市永盛丰化肥经销有限公司
-                            </h4><br/>
-                            <h4>
-                                联系电话：13836420109 邵经理
-                            </h4>
-
-                        </div>
-                    </div>
-                </li>
-
-                <li class="span4">
-                    <div class="thumbnail">
-                        <img alt="300x200" src="img/yh-fuhefei.gif" />
-                        <div class="caption">
-                            <h2>
-                                宜化硫酸钾
-                            </h2><br/>
-                            <h4>
-                                经销商：海伦市永盛丰化肥经销有限公司
-                            </h4><br/>
-                            <h4>
-                                联系电话：13836420109 邵经理
-                            </h4>
-
-                        </div>
-                    </div>
-                </li>
-
-                </ul>
-
-            <!-- 云天化 -->
-
-            <ul class="thumbnails">
-                <li class="span4">
-                    <div class="thumbnail">
-                        <img alt="300x200" src="img/yh-fuhefei.gif" />
-                        <div class="caption">
-                            <h2>
-                                云天化复合肥
-                            </h2><br/>
-                            <h4>
-                                经销商：海伦市永盛丰化肥经销有限公司
-                            </h4><br/>
-                            <h4>
-                                联系电话：13836420109 邵经理
-                            </h4>
-
-                        </div>
-                    </div>
-                </li>
-
-                <li class="span4">
-                    <div class="thumbnail">
-                        <img alt="300x200" src="img/yh-fuhefei.gif" />
-                        <div class="caption">
-                            <h2>
-                                云天化二铵
-                            </h2><br/>
-                            <h4>
-                                经销商：海伦市永盛丰化肥经销有限公司
-                            </h4><br/>
-                            <h4>
-                                联系电话：13836420109 邵经理
-                            </h4>
-
-                        </div>
-                    </div>
-                </li>
-
-                <li class="span4">
-                    <div class="thumbnail">
-                        <img alt="300x200" src="img/yh-fuhefei.gif" />
-                        <div class="caption">
-                            <h2>
-                                云天化尿素
-                            </h2><br/>
-                            <h4>
-                                经销商：海伦市永盛丰化肥经销有限公司
-                            </h4><br/>
-                            <h4>
-                                联系电话：13836420109 邵经理
-                            </h4>
-
-                        </div>
-                    </div>
-                </li>
-
-            </ul>
-
-
-            <!-- 辽宁东北丰 -->
-
-            <ul class="thumbnails">
-                <li class="span4">
-                    <div class="thumbnail">
-                        <img alt="300x200" src="img/yh-fuhefei.gif" />
-                        <div class="caption">
-                            <h2>
-                                东北丰掺混肥
-                            </h2><br/>
-                            <h4>
-                                经销商：海伦市永盛丰化肥经销有限公司
-                            </h4><br/>
-                            <h4>
-                                联系电话：13836420109 邵经理
-                            </h4>
-
-                        </div>
-                    </div>
-                </li>
-
-                <li class="span4">
-                    <div class="thumbnail">
-                        <img alt="300x200" src="img/yh-fuhefei.gif" />
-                        <div class="caption">
-                            <h2>
-                                东北丰复合肥
-                            </h2><br/>
-                            <h4>
-                                经销商：海伦市永盛丰化肥经销有限公司
-                            </h4><br/>
-                            <h4>
-                                联系电话：13836420109 邵经理
-                            </h4>
-
-                        </div>
-                    </div>
-                </li>
-
-
-            </ul>
+ 
 
 
 
-            <!-- 湖北鄂中 -->
-
-            <ul class="thumbnails">
-                <li class="span4">
-                    <div class="thumbnail">
-                        <img alt="300x200" src="img/yh-fuhefei.gif" />
-                        <div class="caption">
-                            <h2>
-                                鄂中复合肥
-                            </h2><br/>
-                            <h4>
-                                经销商：海伦市永盛丰化肥经销有限公司
-                            </h4><br/>
-                            <h4>
-                                联系电话：13836420109 邵经理
-                            </h4>
-
-                        </div>
-                    </div>
-                </li>
-
-            </ul>
+<script>
 
 
+$( document ).ready(function() {
 
-            <!-- 宁夏金牛 -->
+	//$('#share-fee-div').hide();
 
-            <ul class="thumbnails">
-                <li class="span4">
-                    <div class="thumbnail">
-                        <img alt="300x200" src="img/yh-fuhefei.gif" />
-                        <div class="caption">
-                            <h2>
-                                金牛硫酸钾
-                            </h2><br/>
-                            <h4>
-                                经销商：海伦市永盛丰化肥经销有限公司
-                            </h4><br/>
-                            <h4>
-                                联系电话：13836420109 邵经理
-                            </h4>
+	$('#qqloginBtn').hide();
+	$('#qqstatus').show();
 
-                        </div>
-                    </div>
-                </li>
+	
+	$( "#cm-msg-window" ).dialog({
+		 autoOpen: false,
+		 modal: true, 
+		 buttons: {
+			 确定: function() {
+				 $( this ).dialog( "close" );
+		 	}
+		 }
+	});
+	$( "#share-fee-div" ).dialog({
+		 autoOpen: false,
+		 modal: true,
+		 width:$( "#share-fee-div" ).width()+30
+	});
+	$( "#account-div" ).dialog({
+		 autoOpen: false,
+		 modal: true,
+		 height: $( "#account-div" ).height()+30,
+		 width: $( "#account-div" ).width()+50
+	});
+	
+	
+	$('#qqloginBtn img').on("click", function() {
+		window.open ('https://graph.qq.com/oauth2.0/authorize?response_type=code&client_id=100484692&redirect_uri=http://www.wanggousousuo.com/qqcallback.jsp&state=test' );
+		//https://graph.qq.com/oauth2.0/authorize?response_type=code&client_id=100484692&redirect_uri=http://bijia365.gotoip1.com/qqcallback.jsp&state=test
 
-                <li class="span4">
-                    <div class="thumbnail">
-                        <img alt="300x200" src="img/yh-fuhefei.gif" />
-                        <div class="caption">
-                            <h2>
-                                金牛复合肥
-                            </h2><br/>
-                            <h4>
-                                经销商：海伦市永盛丰化肥经销有限公司
-                            </h4><br/>
-                            <h4>
-                                联系电话：13836420109 邵经理
-                            </h4>
+	}); //end  on
+	
+	$('#qqlogout').on("click", function() {
+		$.ajax({
+			type:'get',
+			 url:'login.jsp',
+			 data:{ "method":'logout'},
+			 async: false,
+			 success:function(data){
+		 		return;
+			 }
+		 }) ;
+		$('#qqloginBtn').show();
+		$('#qqstatus').hide();
+	}); //end  on
 
-                        </div>
-                    </div>
-                </li>
+	
+	$("#share-fee-click").on("click", function() {
+		
+	//	$('#body-cover').show();
+	//	$('#share-fee-div').css("left",  $(window).width()-350   );  
+	//	$('#share-fee-div').css("top",  50 ); 
+	//	$('#share-fee-div').css("z-index", 50 ); 
+		
+		$('#share-fee-div').dialog("open");
+		
+		
+	}); //end  on	
+	
+	$('#share-fee-div-cancel').on("click", function() {
+		$( "#share-fee-div" ).dialog("close" );
+		
+	}); //end  on
+	
+	//申请返利 页面 点击提交按钮
+	$('#share-fee-div-ok').on("click", function() {
+		
+		if($('#s-f-shopname').val()=='' || $('#s-f-shopname').val()=="请选择"){
+			var temp = $(".cm-f-msg").text();
+			setTimeout(function(){ $(".cm-f-msg").text(temp); },5000)
+			
+			$(".cm-f-msg").text("请选择网站名称");
+			$('#s-f-shopname').effect( "highlight" ,5000);
+			$(".cm-f-msg").effect( "highlight" ,5000);
+			return;
+		}
+		
+		if($('#s-f-orderid').val()==''){
+			var temp = $(".cm-f-msg").text();
+			setTimeout(function(){ $(".cm-f-msg").text(temp); },5000)
 
-            </ul>
-<br/><br/>
+			$(".cm-f-msg").text("请输入订单号");
+			$('#s-f-orderid').effect( "highlight" ,5000);
+			$(".cm-f-msg").effect( "highlight" ,5000);
+			return;
+		}
+		
+		$.ajax({
+			type:'get',
+			 url:'fanli',
+			 data:{ "actiontype":'addOrder',"s-f-shopname":$('#s-f-shopname').val(),
+				 "s-f-orderid":$('#s-f-orderid').val(),"s-f-comment":$('#s-f-comment').val()},
+			 async: false,
+			 success:function(data){
+				 if(data == '提交成功！'){
+						$('#s-f-orderid').val('');
+						//$('#s-f-comment').val('');
+						showWindow('提交成功，您可以到 [我的账户]');
+						//$( "#cm-msg-window p" ).text("提交成功");
+						//$( "#cm-msg-window" ).dialog("open");
+							//.delay(2500)
+							//.fadeOut(function(){ $(this).dialog("close") });
+				 }
+				 else{
+					 $( "#cm-msg-window p" ).text("提交失败: "+ data);
+					 $( "#cm-msg-window" ).dialog("open");
+				 }
+		 		return;
+			 }
+		 }) ;
+		
+		//$('#share-fee-next').css("left", $(window).width()-350  );  
+		//$('#share-fee-next').css("top", 50 ); 
+	//	$('#share-fee-next').css("z-index", 50 ); 
+		//$('#share-fee-next').show();
+		//window.open ('http://s.share.baidu.com/mshare?click=1&url=http%3A%2F%2Flocalhost%2Fwanggousousuo%2Fsearch.jsp&uid=6686604&to=mshare&type=text&relateUid=&pic=&title=%25E7%25BD%2591%25E8%25B4%25AD%25E6%2590%259C%25E7%25B4%25A2%25E7%25BD%2591%25EF%25BC%258C%25E8%2583%25BD%25E5%2590%258C%25E6%2597%25B6%25E6%2590%259C%25E7%25B4%25A2%25E6%25B7%2598%25E5%25AE%259D%2520%25E5%25A4%25A9%25E7%258C%25AB%2520%25E4%25BA%25AC%25E4%25B8%259C%2520%25E5%25BD%2593%25E5%25BD%2593%2520%25E4%25BA%259A%25E9%25A9%25AC%25E9%2580%258A%25E7%25AD%2589%2520n%25E5%25AE%25B6%25E5%2595%2586%25E5%259F%258E&key=&sign=on&desc=&comment=&searchPic=0&l=17vc1fn3o17vc1fo3217vc1hk2h&linkid=hj2tfbegxas&sloc=844.231.1.9.1.39.15.128.28.2.649&apiType=0&buttonType=0&firstime=1366888266275' );		
+	}); //end  on
+	
+	$('#share-fee-next-ok').on("click", function() {
+		$(this).parent().parent().hide();
+		$('#body-cover').hide();
+		
+	}); //end  on
+	
+	$('#share-fee-next-cancel').on("click", function() {
+		$(this).parent().parent().slideUp();
+		$('#body-cover').hide();
+		
+	}); //end  on
+	
+	$('#account-link').on("click", function() {
+		
+			
+		
+		//alert('a');
+		//$('#body-cover').show();
+		//$('#account-div').css("left", ($(window).width()-$('#account-div').width())/2 );  
+		//$('#account-div').css("top",  50 );
+		
+		$("#account-div").load("part/account-info.jsp", function(){
+			$("#account-menu-request-money").trigger('click'); 
+		});
+		
+		$("#account-div").dialog("open");
+		
+	}); //end  on
+	
+	
 
-    <!-- 品牌 -->
+}); //end document ready
 
-            <h1>经营品牌：</h1>
-            <h2>本店长期经营湖北宜化、云天化、辽宁东北丰、湖北鄂中、宁夏金牛等多个品牌，欢迎城乡上下经销商、农业合作社及农民朋友光临惠顾，联系电话 13836420109 邵经理</h2><br/>
-            <br/>
-            <ul class="thumbnails">
-                <li class="span4">
-                    <div class="thumbnail">
-                        <img alt="300x200" src="img/yihua.jpg" />
-                        <div class="caption">
-                            <h3>
-                                湖北宜化化肥
-                            </h3>
-                            <p>厂家简介:
-                                湖北宜化化工股份有限公司(简称"湖北宜化")，位于美丽的三峡门户城市——宜昌市，主要经营化肥、化工产品的生产与销售，
-                                是湖北省重要的支农骨干企业。
-                                公司产品涵盖化肥、化工、热电3大领域10余个品种，具备年产40万吨合成氨、60万吨尿素(其中大颗粒尿素25万吨)的产品生产能力。
+function showWindow(msg) {
+	$( "#cm-msg-window p" ).text(msg);
+	$( "#cm-msg-window" ).dialog("open");
+}
 
-                            </p>
-                            <br/>
-                            <h3>
-                                本店经销:
-                            </h3>
-                            <h4>
-                                宜化复合肥、宜化磷酸二铵、宜化尿素、宜化磷酸一铵、宜化硫酸钾
-                            </h4>
-                            <br/>
-                            <h4>
-                                联系电话：13836420109 邵经理
-                            </h4>
-
-                        </div>
-                    </div>
-                </li>
-                <li class="span4">
-                    <div class="thumbnail">
-                        <img alt="300x200" src="img/yuntianhua.jpg" />
-                        <div class="caption">
-                            <h3>
-                                云天化化肥
-                            </h3>
-                            <p>厂家简介:
-                                云天化股份有限公司占地面积126万平方米,主营化肥、化工原料及产品的生产与销售,
-                                拥有年产50万吨合成氨、76万吨尿素、15万吨硝基复合肥等的生产能力。
-                                其中，合成氨、尿素装置单套生产能力目前居全国最大。
-
-                            </p>
-                            <br/>
-                            <h3>
-                                本店经销:
-                            </h3>
-                            <h4>
-                                云天化复合肥、云天化磷酸二铵、云天化尿素
-                            </h4>
-                            <br/>
-                            <h4>
-                                联系电话：13836420109 邵经理
-                            </h4>
-                        </div>
-                    </div>
-                </li>
-                <li class="span4">
-                    <div class="thumbnail">
-                        <img alt="300x200" src="img/dongbeifeng.jpg" />
-                        <div class="caption">
-                            <h3>
-                                辽宁东北丰化肥
-                            </h3>
-                            <p>厂家简介:
-                                辽宁东北丰专用肥有限公司，位于辽宁铁岭，占地面积88000平方米，建筑面积32800平方米。
-                                生产设备先进，检测化验设备齐全，技术力量雄厚，现有10万吨复混肥生产线二条和电子配料BB肥生产线3条，年生产能力50万吨。
-                            </p>
-                            <br/>
-                            <h3>
-                                本店经销:
-                            </h3>
-                            <h4>
-                                东北丰复合肥、东北丰掺混肥
-                            </h4>
-                            <br/>
-                            <h4>
-                                联系电话：13836420109 邵经理
-                            </h4>
-                        </div>
-                    </div>
-                </li>
-            </ul>
-
-            <ul class="thumbnails">
-                <li class="span4">
-                    <div class="thumbnail">
-                        <img alt="300x200" src="img/ezhong2.jpg" />
-                        <div class="caption">
-                            <h3>
-                                湖北鄂中化肥
-                            </h3>
-
-                            <p>厂家简介:
-                                公司占地1000余亩，现拥有员工1280余人，固定资产4亿元，
-                                年产50万吨硫酸钾复合肥、60万吨尿基复合肥、30万吨过磷酸钙、20万吨高塔复合肥、40万吨磷酸一铵、5万吨磷酸二铵、5万吨BB肥、5万吨有机-无机复混肥。
-
-                            </p>
-                            <br/>
-                            <h3>
-                                本店经销:
-                            </h3>
-                            <h4>
-                                鄂中复合肥
-                            </h4>
-                            <br/>
-                            <h4>
-                                联系电话：13836420109 邵经理
-                            </h4>
-                        </div>
-                    </div>
-                </li>
-                <li class="span4">
-                    <div class="thumbnail">
-                        <img alt="300x200" src="img/jinniu.jpg" />
-                        <div class="caption">
-                            <h3>
-                                宁夏金牛化肥
-                            </h3>
-                            <p>
-                                厂家简介:
-                                宁夏金牛集团化肥有限责任公司，坐落于美丽的宁夏省吴忠市，
-                                占地三百亩，满负荷年产值可达10亿元，是宁夏化工骨干企业和宁夏最大的一家复合肥生产企业，产品畅销国内十多个省，深受广大农民朋友喜爱。
-                            </p>
-                            <br/>
-                            <h3>
-                                本店经销:
-                            </h3>
-                            <h4>
-
-                                金牛硫酸钾、金牛复合肥
-                            </h4>
-                            <br/>
-                            <h4>
-                                联系电话：13836420109 邵经理
-                            </h4>
-                        </div>
-                    </div>
-                </li>
-
-            </ul>
-
-
-
-
-
-        </div>
-    </div>
+</script>
+ 
+<div id="hat" >
+	 
+	 	<div id="hat-x2">
+		<!-- Baidu Button BEGIN -->
+		<!-- Baidu Button BEGIN -->
+			<div id="bdshare" class="bdshare_t bds_tools get-codes-bdshare">
+			<span class="bds_more">分享到：</span>
+			<a class="bds_qzone"></a>
+			<a class="bds_tsina"></a>
+			<a class="bds_tqq"></a>
+			<a class="bds_renren"></a>
+			<a class="bds_t163"></a>
+			</div>
+			<script type="text/javascript" id="bdshare_js" data="type=tools&amp;uid=6686604" ></script>
+			<script type="text/javascript" id="bdshell_js"></script>
+			<script type="text/javascript">
+			document.getElementById("bdshell_js").src = "http://bdimg.share.baidu.com/static/js/shell_v2.js?cdnversion=" + Math.ceil(new Date()/3600000)
+			</script>
+			<!-- Baidu Button END -->
+		<!-- Baidu Button END -->
+	</div>	
+	 
+	<div class="fenge001" ><span  > | </span></div>
+		
+	<div id="view-history-div" class="hat-link-001 cm-can-hover">
+		<a href="search.jsp" id="view-history-link" style="color:green;">我看过的宝贝</a></div>
+	
+	<div class="fenge001" ><span  > | </span></div>
+	
+	<!-- 
+	<div class="hat-link-001 cm-can-hover">
+		<a href="#" id="share-fee-click" style="color:green;">购物返利</a>
+	</div>
+	<div class="fenge001" ><span  > | </span></div>
+	 -->
+	
+	<div class="hat-link-001 cm-can-hover">
+		<a href="#" id="account-link" style="color:green;">我的账户</a>
+	</div>
+	<div class="fenge001" ><span  > | </span></div>
+	
+	<div id="qqloginBtn" class="hat-qq">
+		<div> 欢迎来到网购搜索网！</div>   
+ 		<img alt="使用QQ帐号登录" src="img/qqlogin.png">
+	</div>		
+			
+	<div id="qqstatus" class="hat-qq" style="display: none;">
+		<div>欢迎来到网购搜索网！ </div> 
+ 		<!-- 
+ 			<img width="20" height="20"  alt="" src="null">
+ 		 -->
+ 		<div>null</div> 
+ 		<!-- 
+	 		<div class="hat-link-001">
+	 			<a href="#" id="account-link-bk"  account-link  style="color:green;" >[ 我的账户 ] </a>&nbsp; 
+	 		</div>
+ 		 -->
+ 		<div class="hat-link-001">
+ 			<a href="#" id="qqlogout"    style="color:green;" > [ 退出 ] </a>
+		</div>
+	</div>
+	
+	
 </div>
 
-<h4>本站信息(文字、图片等)以实物为准，了解详细情况 请电话或进店咨询， 地址：黑龙江省海伦市 化肥大市场东北门30号， 电话：13836420109 邵经理</h4>
-<br/>
-<script type="text/javascript">
+<div id="share-fee-div" class="cm-form" title="购物返利">
+	
+		<div class="cm-f-msg">	部分商家提够返利，购买后可在此申请，之后点击 [我的账户] 查看。
+		</div>
+		
+		<div class="cm-f-item">
+			<div class="cm-f-i-label">
+				<span style="color: red;">*</span><span>网站名称:</span>
+			</div>
+			<div class="cm-f-i-input">
+				<select name="s-f-shopname" id="s-f-shopname">
+					<option value="taobao">淘宝网</option>
+					<option value="tmall">天猫商城</option>
+					<option value="amazon">亚马逊中国</option>
+					<option value="dangdang">当当网</option>
+					<option value="yihaodian">一号店</option>
+					<option value="fanke">凡客诚品</option>
+				</select>
+			</div>
+		</div>
+		
+		<div class="cm-f-item">
+			<div class="cm-f-i-label">
+				<span style="color: red;">*</span><span>订单号:</span>
+			</div>
+			<div class="cm-f-i-input">
+				<input type="text" name="s-f-orderid" id="s-f-orderid" title="请输入订单号." />
+			</div>
+		</div>
+		
+		<div class="cm-f-item">
+			<div class="cm-f-i-label">
+				<span>备注:</span>
+			</div>
+			<div class="cm-f-i-input">
+				<input type="text" name="s-f-comment" id="s-f-comment"/>
+			</div>
+		</div>
+		
+		<div class="cm-f-buttons">
+			<input type="button" id="share-fee-div-ok" class="cm-f-button common-button-ok" value="提交"/>
+			<input type="button" id="share-fee-div-cancel" class="cm-f-button common-button-cancel" value="取消"/>
+		</div>
+</div>
+
+
+
+<div id="account-div" title="我的账户">
+
+</div>
+
+<div id="cm-msg-window" title="提示信息" >
+	<p>提示信息.</p>
+</div>
+
+<div id="body-cover-bk"  >
+</div>
+ 
+ 
+ 
+
+<div id="header">
+	<div id="header-y1">
+			<div id="header-logo">
+				<a href="/wanggousousuo/index.jsp">
+					<img alt="" src="/wanggousousuo/img/logo-wg.png"/>
+				</a>
+			</div>
+		 	<div id="header-search">
+				<input type="text" id="keyword" value="">
+				<input type="button" id="submit-search-btn" value="搜索">
+				<div id="hot-words2">
+					<span>热门搜索:</span>
+					<a href="search.jsp?keyword=短袖T恤">短袖T恤</a>
+					<a href="search.jsp?keyword=新款" style="color: red">新款</a>
+					<a href="search.jsp?keyword=三件套">三件套</a>
+					<a href="search.jsp?keyword=电风扇">电风扇</a>
+					<a href="search.jsp?keyword=凉席">凉席</a>
+					<a href="search.jsp?keyword=运动">运动</a>
+				</div>
+			</div>
+	</div>
+
+</div>
+<!-- end div header -->
+
+	<div id="main">
+ 		
+		<div  class="searchresult" >
+			<div id="keyword-info">
+				<span>相关搜索</span>
+			</div>
+	  
+			<div id="search_filter">
+					<div class="condition">
+						<div class="condition-left-1"><span style="">商家</span> </div>
+						<div class="condition-right-1" id="condition-shops">
+							<ul>
+								 <li class="shop-condition"><a href="#"><span>全部</span></a> </li>
+							</ul>
+							  
+						 </div>
+					</div>
+					<div class="clear-fix-show"></div>
+					 
+					<div class="condition-left-2">排序</div>
+					<div class="condition-right-2" >
+						<a href="#" class="product-sort" id="sort-price-123">价格↑</a><a href="#" class="product-sort" id="sort-price-321">价格↓</a>
+						<a href="#" class="product-sort" id="sort-comment-123">销量↑</a><a href="#" class="product-sort" id="sort-comment-321">销量↓</a>
+					</div>
+					 
+					<div class="condition-left-2">价格区间</div>
+					<div class="condition-right-2" >
+						&nbsp;&nbsp;&nbsp;&nbsp;
+						<input id="price-min" type="text"/> - <input id="price-max"  type="text"/>
+						<a href="#" id="price-betwwen-on"><span>使用</span></a> <a href="#" id="price-betwwen-off"><span>关闭</span></a>
+					</div>
+					<div class="clear-fix-show"></div>
+			</div>
+
+			<div id="search_result"></div>
+
+			<div id="search_item_template" style="display: none;">
+					
+					<div class="search_item">
+						
+						<div class="item_pic">
+							<a href="#" target="_blank" class="logic-view-product">
+								<img src=""  alt="" />
+							</a>
+						</div>
+						<div class="item_title">
+							<a target="_blank" href="#" class="logic-view-product"></a>
+						</div>
+						
+						<div class="item_source">
+							<a target="_blank" href="#" class="logic-view-product"></a>
+						</div>
+						<div class="item_comment" >
+							<a target="_blank" href="#" class="logic-view-product">评论(<span></span>)  |  </a>
+						</div>
+						<div class="item_price">￥<span></span></div>
+
+						<input type="hidden"   value=""/>
+					</div>
+			</div>
+			
+			<div id="item-hovor">
+				<div id="item-shoucang" style="z-index: 5500" >☆ 收藏 ☆</div>
+				<a id="link-cache" target="_blank" href="#"></a>
+				
+			</div>
+			
+			<a id="go-top" href="#"></a>
+				
+			
+			<div class="clear-fix-show"></div>
+			<div id="pages">
+				<div id="page_numbers">
+					<a href="#" class="pageindex" ><span >1</span></a>
+					<a href="#" class="pageindex" ><span >2</span></a>
+					<a href="#" class="pageindex" ><span >3</span></a>
+					<a href="#" class="pageindex" ><span >4</span></a>
+					<a href="#" class="pageindex" ><span >5</span></a>
+					<a href="#" class="pageindex" ><span >6</span></a>
+				</div>
+			</div>
+		</div>
+		<!-- end right -->
+	</div>
+	<!-- end div main -->
+
+
+<div id="view-history">
+
+
+</div>
+
+<!-- waiting div -->
+<div id="loading">
+  <p><img src="img/loading.gif" /></p>
+</div>
+
+	<div class="floater-x"></div>
+	
+ 
+
+<div id="footer3" >
+	<div id="footer-link-x1">
+		<!-- 
+		<a href="/wanggousousuo/index.jsp"><span>网购搜索首页</span></a>
+		<a href="/wanggousousuo/blog.jsp"><span>网购新鲜事</span></a>
+		<a href="/wanggousousuo/about.jsp"><span>关于</span></a>
+		<a href="/wanggousousuo/map-1.htm"><span>网站地图</span></a>
+		 -->
+		 
+	</div>	
+	<span style="width: 100%;text-align: center;color:#666;">Copyright © 2012-2013 网购搜索网, All Rights Reserved, <a style="color:#666;"href="http://www.miitbeian.gov.cn" target="_blank">辽ICP备1300820号</a></span>
+	<div style="display: none;">
+		<script type="text/javascript">
 var _bdhmProtocol = (("https:" == document.location.protocol) ? " https://" : " http://");
-document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3Fa478cf6ea08e02622381372de94251bd' type='text/javascript'%3E%3C/script%3E"));
+document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3Fc2dab893ac85ba9830b8dfd19e9ca3ad' type='text/javascript'%3E%3C/script%3E"));
 </script>
 
+	</div>
+ 
+</div>
+ 
+ 
 </body>
+
 </html>
